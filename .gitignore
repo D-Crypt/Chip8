@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs
+/Chip8VS.vcxproj.user
+/Chip8VS.vcxproj.filters
+/Chip8VS.vcxproj
+/Chip8VS.sln
