@@ -7,7 +7,7 @@ public:
 	Chip8();                 // Class contructor
 	uint8_t registers[16];   // 16 8-bit registers named V0 to VF
 	uint8_t memory[4096];    // 4k bytes of memory
-	uint16_t index;		     // 16-bit index register
+	uint16_t index;	         // 16-bit index register
 	uint16_t progCounter;    // 16-bit program counter that holds the address of the next instruction to execute
 	uint16_t stack[16];      // 16 levels of stack required
 	uint8_t stackPointer;    // 8-bit pointer to track where values are placed in the stack
