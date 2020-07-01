@@ -1,5 +1,9 @@
 #pragma once
 #include <cstdint>
+#include <random>
+
+using std::default_random_engine;
+using std::uniform_int_distribution;
 
 class Chip8
 {
@@ -16,8 +20,9 @@ public:
 	uint8_t keypad[16];      // 16 input keys for controlling the system
 	uint32_t video[64 * 32]; // Memory buffer used for storing graphics (64 pixels wide, 32 pixels tall)
 	uint16_t opcode;         // Operation code that specifies what instruction to be performed	
+	default_random_engine randGen;
+	uniform_int_distribution<uint8_t> randByte;
 
 	void loadROM(char const* filename); // filename is a pointer to a const char
-
 };
 

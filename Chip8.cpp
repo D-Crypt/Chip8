@@ -1,13 +1,11 @@
 #include "Chip8.h"
 #include <fstream>
 #include <chrono>
-#include <random>
 
 using std::ifstream;
 using std::ios;
 using std::streampos;
 using std::chrono::system_clock;
-using std::uniform_int_distribution;
 
 const unsigned int startAddress = 0x200;      // CHIP-8 instructions begin in memory starting at address 0x200
 const unsigned int fontsetSize = 16 * 5;       // 16 characters required, each taking up 5 bytes of memory
@@ -60,6 +58,7 @@ void Chip8::loadROM(char const* filename)
 }
 
 Chip8::Chip8()
+	
 {
 	progCounter = startAddress; // Initialise PC to 0x200
 	
@@ -68,4 +67,6 @@ Chip8::Chip8()
 	{
 		memory[fontsetStartAddress + i] = fontset[i];
 	}
+
+	
 }
