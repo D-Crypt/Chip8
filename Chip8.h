@@ -18,5 +18,6 @@ public:
 	uint16_t opcode;         // Operation code that specifies what instruction to be performed	
 
 	void loadROM(char const* filename); // filename is a pointer to a const char
+
 };
 
