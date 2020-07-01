@@ -5,7 +5,7 @@ using std::ifstream;
 using std::ios;
 using std::streampos;
 
-const unsigned int start_address = 0x200;      // CHIP-8 instructions begin in memory starting at address 0x200
+const unsigned int startAddress = 0x200;      // CHIP-8 instructions begin in memory starting at address 0x200
 const unsigned int fontsetSize = 16 * 5;       // 16 characters required, each taking up 5 bytes of memory
 const unsigned int fontsetStartAddress = 0x50; // storage space for characters begins at 0x50
 
@@ -48,7 +48,7 @@ void Chip8::loadROM(char const* filename)
 		// Load ROM content into CHIP-8's memory
 		for (long i = 0; i < size; ++i)
 		{
-			memory[i + start_address] = buffer[i];
+			memory[i + startAddress] = buffer[i];
 		}
 
 		delete[] buffer;
@@ -57,6 +57,11 @@ void Chip8::loadROM(char const* filename)
 
 Chip8::Chip8()
 {
-	progCounter = start_address; // Initialise PC to 0x200
+	progCounter = startAddress; // Initialise PC to 0x200
 	
+	// Load fonts into memory
+	for (unsigned int i = 0; i < fontsetSize; ++i)
+	{
+		memory[fontsetStartAddress + i] = fontset[i];
+	}
 }
