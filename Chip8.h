@@ -24,5 +24,9 @@ public:
 	uniform_int_distribution<uint8_t> randByte; // Random byte
 
 	void loadROM(char const* filename); // filename is a pointer to a const char
+
+	// Below is a list of the 34 instructions executed by CHIP-8 with their accompanying hexadecimal values:
+	void op_00E0(); // CLS: Clear the display
+	
 };
 

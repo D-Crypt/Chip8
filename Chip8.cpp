@@ -69,3 +69,8 @@ Chip8::Chip8() : randGen(system_clock::now().time_since_epoch().count()) // Init
 
 	randByte = uniform_int_distribution<uint8_t>(0, 255U); // Initialise random byte to a number between 0 and 255
 }
+
+void Chip8::op_00E0() // Clear display
+{
+	memset(video, 0, sizeof(video));
+}
