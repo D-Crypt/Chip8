@@ -27,6 +27,7 @@ public:
 
 	// Below is a list of the 34 instructions executed by CHIP-8 with their accompanying hexadecimal values:
 	void op_00E0(); // CLS: Clear the display
-	
+	void op_00EE(); // RET: Return from a subroutine
+	void op_1NNN(); // JUMP: Jump to location NNN
 };
 
