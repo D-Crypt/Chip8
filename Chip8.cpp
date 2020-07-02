@@ -53,12 +53,11 @@ void Chip8::loadROM(char const* filename)
 			memory[i + startAddress] = buffer[i];
 		}
 
-		delete[] buffer;
+		delete[] buffer; // Free up memory from buffer
 	}
 }
 
-Chip8::Chip8()
-	
+Chip8::Chip8() : randGen(system_clock::now().time_since_epoch().count()) // Initialise RNG with a seed based on the current time
 {
 	progCounter = startAddress; // Initialise PC to 0x200
 	
@@ -68,5 +67,5 @@ Chip8::Chip8()
 		memory[fontsetStartAddress + i] = fontset[i];
 	}
 
-	
+	randByte = uniform_int_distribution<uint8_t>(0, 255U); // Initialise random byte to a number between 0 and 255
 }
