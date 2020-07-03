@@ -29,5 +29,18 @@ public:
 	void op_00E0(); // CLS: Clear the display
 	void op_00EE(); // RET: Return from a subroutine
 	void op_1NNN(); // JUMP: Jump to location NNN
+	void op_2NNN(); // CALL: Call a subroutine
+	void op_3XKK(); // Skip next instruction if VX == KK
+	void op_4XKK(); // Skip next instruction if VX != KK
+	void op_5XY0(); // Skip next instruction if VX == VY
+	void op_6XKK(); // Set VX = KK
+	void op_7XKK(); // Set VX += KK
+	void op_8XY0(); // Set VX = VY
+	void op_8XY1(); // Set VX = VX || VY
+	void op_8XY2(); // Set VX = VX && VY
+	void op_8XY3(); // Set VX = VX ^ (XOR) VY
+	void op_8XY4(); // Set VX += VY, set VF = carry
+	void op_8XY5(); // Set VX -= VY, set VF = NOT borrow
+	void op_8XY6(); // 
 };
 
