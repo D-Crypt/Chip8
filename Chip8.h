@@ -24,6 +24,8 @@ public:
 	uint8_t vx;              // V = register, x = lower 4 bits of high byte of instruction
 	uint8_t kk;              // lowest 8 bits (byte) of an instruction
 	uint8_t vy;              // V = register, y = upper 4 bits of low byte of instruction
+	uint8_t vf;              // used as a flag
+	uint16_t sum;            // sum of VX + VY
 
 	const uint16_t endRAM = 0x0FFF; // 0x0FFF is end of CHIP-8 RAM
 	default_random_engine randGen; // Random Number Generator
@@ -33,6 +35,7 @@ public:
 	uint8_t getVX();
 	uint8_t getKK();
 	uint8_t getVY();
+	uint16_t getSum();
 	void skipInstruction();
 
 	// Below is a list of the 34 instructions executed by CHIP-8 with their accompanying hexadecimal values:

@@ -42,6 +42,7 @@ Chip8::Chip8() : randGen(system_clock::now().time_since_epoch().count()) // Init
 	}
 
 	randByte = uniform_int_distribution<uint8_t>(0, 255U); // Initialise random byte to a number between 0 and 255
+	vf = registers[0xF];
 }
 
 void Chip8::loadROM(char const* filename)
@@ -88,6 +89,11 @@ uint8_t Chip8::getVY()
 	// y is the highest 4 bits of the low byte of the instruction
 	// to retrieve y, perform AND operation with opcode then shift 4 bits to the right to isolate value
 	return vy = (opcode & 0x00F0) >> 4;
+}
+
+uint16_t Chip8::getSum()
+{
+	return sum = registers[getVX()] + registers[getVY()];
 }
 
 void Chip8::skipInstruction()
@@ -176,4 +182,18 @@ void Chip8::op_8XY2()
 void Chip8::op_8XY3()
 {
 	registers[getVX()] ^= registers[getVY()];
+}
+
+void Chip8::op_8XY4()
+{
+	if (getSum() > 255) // larger than a byte
+	{
+		vf = 1;
+	}
+	else
+	{
+		vf = 0;
+	}
+
+	registers[getVX()] = sum & 0x00FF;
 }
