@@ -73,7 +73,7 @@ void Chip8::loadROM(char const* filename)
 uint8_t Chip8::getVX()
 {
 	// x is the lowest 4 bits of the high byte of the instruction
-	// to retrieve x, perform AND operation with opcode then shift 8 bits to the right
+	// to retrieve x, perform AND operation with opcode then shift 8 bits to the right to isolate value
 	return vx = (opcode & 0x0F00) >> 8;
 }
 
@@ -81,6 +81,18 @@ uint8_t Chip8::getKK()
 {
 	// get lowest byte
 	return kk = (opcode & 0x00FF);
+}
+
+uint8_t Chip8::getVY()
+{
+	// y is the highest 4 bits of the low byte of the instruction
+	// to retrieve y, perform AND operation with opcode then shift 4 bits to the right to isolate value
+	return vy = (opcode & 0x00F0) >> 4;
+}
+
+void Chip8::skipInstruction()
+{
+	progCounter += 2;
 }
 
 void Chip8::op_00E0()
@@ -116,7 +128,7 @@ void Chip8::op_3XKK()
 {
 	if (registers[getVX()] == getKK())
 	{
-		progCounter += 2;
+		skipInstruction();
 	}
 }
 
@@ -124,11 +136,14 @@ void Chip8::op_4XKK()
 {
 	if (registers[getVX()] != getKK())
 	{
-		progCounter += 2;
+		skipInstruction();
 	}
 }
 
 void Chip8::op_5XY0()
 {
-
+	if (registers[getVX()] == registers[getVY()])
+	{
+		skipInstruction();
+	}
 }

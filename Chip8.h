@@ -21,8 +21,10 @@ public:
 	uint32_t video[64 * 32]; // Memory buffer used for storing graphics (64 pixels wide, 32 pixels tall)
 	uint16_t opcode;         // Operation code that specifies what instruction to be performed	
 	uint16_t address;
-	uint8_t vx;              // V = register, x = variable which is 4 bits (nibble)
+	uint8_t vx;              // V = register, x = lower 4 bits of high byte of instruction
 	uint8_t kk;              // lowest 8 bits (byte) of an instruction
+	uint8_t vy;              // V = register, y = upper 4 bits of low byte of instruction
+
 	const uint16_t endRAM = 0x0FFF; // 0x0FFF is end of CHIP-8 RAM
 	default_random_engine randGen; // Random Number Generator
 	uniform_int_distribution<uint8_t> randByte; // Random byte
@@ -30,6 +32,8 @@ public:
 	void loadROM(char const* filename); // filename is a pointer to a const char
 	uint8_t getVX();
 	uint8_t getKK();
+	uint8_t getVY();
+	void skipInstruction();
 
 	// Below is a list of the 34 instructions executed by CHIP-8 with their accompanying hexadecimal values:
 	void op_00E0(); // CLS: Clear the display
