@@ -197,3 +197,17 @@ void Chip8::op_8XY4()
 
 	registers[getVX()] = sum & 0x00FF;
 }
+
+void Chip8::op_8XY5()
+{
+	if (registers[getVX()] > registers[getVY()])
+	{
+		vf = 1;
+	}
+	else
+	{
+		vf = 0;
+	}
+
+	registers[getVX()] -= registers[getVY()];
+}
