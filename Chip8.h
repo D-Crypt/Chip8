@@ -21,6 +21,7 @@ public:
 	uint32_t video[64 * 32]; // Memory buffer used for storing graphics (64 pixels wide, 32 pixels tall)
 	uint16_t opcode;         // Operation code that specifies what instruction to be performed	
 	uint16_t address;        
+	const uint16_t endRAM = 0xFFF; // 0xFFF is end of CHIP-8 RAM
 	default_random_engine randGen; // Random Number Generator
 	uniform_int_distribution<uint8_t> randByte; // Random byte
 

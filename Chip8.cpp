@@ -83,8 +83,18 @@ void Chip8::op_00EE()
 
 void Chip8::op_1NNN()
 {
-	// Bitwise & used to evaluate both opcode and 0xFF in binary format and modify based on AND operation
-	address = opcode & 0xFFF; // 0xFFF is end of CHIP-8 RAM
+	// Bitwise & used to evaluate both opcode and 0xFFF in binary format 
+	// Used to modify address value based on AND operation to prevent writing outside of memory range
+	address = opcode & endRAM;
 
+	progCounter = address;
+}
+
+void Chip8::op_2NNN()
+{
+	address = opcode & endRAM;
+
+	stack[stackPointer] = progCounter;
+	++stackPointer;
 	progCounter = address;
 }
