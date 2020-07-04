@@ -98,3 +98,16 @@ void Chip8::op_2NNN()
 	++stackPointer;
 	progCounter = address;
 }
+
+void Chip8::op_3XKK()
+{
+	// x is the lowest 4 bits of the high byte of the instruction
+	// to retrieve x, perform AND operation with opcode then shift 8 bits to the right
+	vx = (opcode & 0x0F00) >> 8;
+	kk = (opcode & 0x00FF);
+
+	if (registers[vx] == kk)
+	{
+		progCounter += 2;
+	}
+}

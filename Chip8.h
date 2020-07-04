@@ -20,8 +20,10 @@ public:
 	uint8_t keypad[16];      // 16 input keys for controlling the system
 	uint32_t video[64 * 32]; // Memory buffer used for storing graphics (64 pixels wide, 32 pixels tall)
 	uint16_t opcode;         // Operation code that specifies what instruction to be performed	
-	uint16_t address;        
-	const uint16_t endRAM = 0xFFF; // 0xFFF is end of CHIP-8 RAM
+	uint16_t address;
+	uint8_t vx;              // V = register, x = variable which is 4 bits (nibble)
+	uint8_t kk;              // lowest 8 bits (byte) of an instruction
+	const uint16_t endRAM = 0x0FFF; // 0x0FFF is end of CHIP-8 RAM
 	default_random_engine randGen; // Random Number Generator
 	uniform_int_distribution<uint8_t> randByte; // Random byte
 
