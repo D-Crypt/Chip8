@@ -31,6 +31,19 @@ uint8_t fontset[fontsetSize] =
 	0xF0, 0x80, 0xF0, 0x80, 0x80  // F
 };
 
+Chip8::Chip8() : randGen(system_clock::now().time_since_epoch().count()) // Initialise RNG with a seed based on the current time
+{
+	progCounter = startAddress; // Initialise PC to 0x200
+
+	// Load fonts into memory
+	for (unsigned int i = 0; i < fontsetSize; ++i)
+	{
+		memory[fontsetStartAddress + i] = fontset[i];
+	}
+
+	randByte = uniform_int_distribution<uint8_t>(0, 255U); // Initialise random byte to a number between 0 and 255
+}
+
 void Chip8::loadROM(char const* filename)
 {
 	// Open file as a binary stream and move file pointer to end of stream
@@ -57,20 +70,13 @@ void Chip8::loadROM(char const* filename)
 	}
 }
 
-Chip8::Chip8() : randGen(system_clock::now().time_since_epoch().count()) // Initialise RNG with a seed based on the current time
-{
-	progCounter = startAddress; // Initialise PC to 0x200
-	
-	// Load fonts into memory
-	for (unsigned int i = 0; i < fontsetSize; ++i)
-	{
-		memory[fontsetStartAddress + i] = fontset[i];
-	}
-
-	randByte = uniform_int_distribution<uint8_t>(0, 255U); // Initialise random byte to a number between 0 and 255
-}
-
-void Chip8::op_00E0() // Clear display
+void Chip8::op_00E0()
 {
 	memset(video, 0, sizeof(video));
+}
+
+void Chip8::op_00EE()
+{
+	--stackPointer;
+	progCounter = stack[stackPointer];
 }
