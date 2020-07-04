@@ -188,11 +188,11 @@ void Chip8::op_8XY4()
 {
 	if (getSum() > 255) // larger than a byte
 	{
-		vf = 1;
+		registers[vf] = 1;
 	}
 	else
 	{
-		vf = 0;
+		registers[vf] = 0;
 	}
 
 	registers[getVX()] = sum & 0x00FF;
@@ -202,12 +202,21 @@ void Chip8::op_8XY5()
 {
 	if (registers[getVX()] > registers[getVY()])
 	{
-		vf = 1;
+		registers[vf] = 1;
 	}
 	else
 	{
-		vf = 0;
+		registers[vf] = 0;
 	}
 
 	registers[getVX()] -= registers[getVY()];
+}
+
+void Chip8::op_8XY6()
+{
+	// checks if least-significant bit of VX is 1
+	registers[vf] = (registers[getVX()] & 0x1);
+
+	// shifting all bits to the right is equivalent to dividing by 2
+	registers[getVX()] >>= 1;
 }
