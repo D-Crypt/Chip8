@@ -111,3 +111,14 @@ void Chip8::op_3XKK()
 		progCounter += 2;
 	}
 }
+
+void Chip8::op_4XKK()
+{
+	vx = (opcode & 0x0F00) >> 8;
+	kk = (opcode & 0x00FF);
+
+	if (registers[vx] != kk)
+	{
+		progCounter += 2;
+	}
+}
