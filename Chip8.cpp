@@ -172,3 +172,8 @@ void Chip8::op_8XY2()
 {
 	registers[getVX()] &= registers[getVY()];
 }
+
+void Chip8::op_8XY3()
+{
+	registers[getVX()] ^= registers[getVY()];
+}
