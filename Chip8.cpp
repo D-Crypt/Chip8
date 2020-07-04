@@ -147,3 +147,8 @@ void Chip8::op_5XY0()
 		skipInstruction();
 	}
 }
+
+void Chip8::op_6XKK()
+{
+	registers[getVX()] = getKK();
+}
