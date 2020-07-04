@@ -9,7 +9,7 @@ using std::chrono::system_clock;
 
 const unsigned int startAddress = 0x200;      // CHIP-8 instructions begin in memory starting at address 0x200
 const unsigned int fontsetSize = 16 * 5;       // 16 characters required, each taking up 5 bytes of memory
-const unsigned int fontsetStartAddress = 0x50; // storage space for characters begins at 0x50
+const unsigned int fontsetStartAddress = 0x50; // Storage space for characters begins at 0x50
 
 uint8_t fontset[fontsetSize] =
 {
@@ -74,20 +74,20 @@ void Chip8::loadROM(char const* filename)
 uint8_t Chip8::getVX()
 {
 	// x is the lowest 4 bits of the high byte of the instruction
-	// to retrieve x, perform AND operation with opcode then shift 8 bits to the right to isolate value
+	// To retrieve x, perform AND operation with opcode then shift 8 bits to the right to isolate value
 	return vx = (opcode & 0x0F00) >> 8;
 }
 
 uint8_t Chip8::getKK()
 {
-	// get lowest byte
+	// Get lowest byte
 	return kk = (opcode & 0x00FF);
 }
 
 uint8_t Chip8::getVY()
 {
 	// y is the highest 4 bits of the low byte of the instruction
-	// to retrieve y, perform AND operation with opcode then shift 4 bits to the right to isolate value
+	// To retrieve y, perform AND operation with opcode then shift 4 bits to the right to isolate value
 	return vy = (opcode & 0x00F0) >> 4;
 }
 
@@ -186,7 +186,7 @@ void Chip8::op_8XY3()
 
 void Chip8::op_8XY4()
 {
-	if (getSum() > 255) // larger than a byte
+	if (getSum() > 255) // Larger than a byte
 	{
 		registers[vf] = 1;
 	}
@@ -214,10 +214,10 @@ void Chip8::op_8XY5()
 
 void Chip8::op_8XY6()
 {
-	// checks if least-significant bit of VX is 1
+	// Checks if least-significant bit of VX is 1
 	registers[vf] = (registers[getVX()] & 0x1);
 
-	// shifting all bits to the right is equivalent to dividing by 2
+	// Shifting all bits to the right is equivalent to dividing by 2
 	registers[getVX()] >>= 1;
 }
 
@@ -233,4 +233,13 @@ void Chip8::op_8XY7()
 	}
 
 	registers[getVX()] = registers[getVY()] - registers[getVX()];
+}
+
+void Chip8::op_8XYE()
+{
+	// 0x80 in binary form is 10000000, which can be used to retrieve the most-significant bit
+	registers[vf] = (registers[getVX()] & 0x80) >> 7;
+
+	// Shifting all bits to the left is equivalent to multiplying by 2
+	registers[getVX()] <<= 1;
 }
