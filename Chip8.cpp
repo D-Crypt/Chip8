@@ -220,3 +220,17 @@ void Chip8::op_8XY6()
 	// shifting all bits to the right is equivalent to dividing by 2
 	registers[getVX()] >>= 1;
 }
+
+void Chip8::op_8XY7()
+{
+	if (registers[getVY()] > registers[getVX()])
+	{
+		registers[vf] = 1;
+	}
+	else
+	{
+		registers[vf] = 0;
+	}
+
+	registers[getVX()] = registers[getVY()] - registers[getVX()];
+}
