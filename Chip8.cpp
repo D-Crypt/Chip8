@@ -152,3 +152,8 @@ void Chip8::op_6XKK()
 {
 	registers[getVX()] = getKK();
 }
+
+void Chip8::op_7XKK()
+{
+	registers[getVX()] += getKK();
+}
