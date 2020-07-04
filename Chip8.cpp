@@ -70,6 +70,19 @@ void Chip8::loadROM(char const* filename)
 	}
 }
 
+uint8_t Chip8::getVX()
+{
+	// x is the lowest 4 bits of the high byte of the instruction
+	// to retrieve x, perform AND operation with opcode then shift 8 bits to the right
+	return vx = (opcode & 0x0F00) >> 8;
+}
+
+uint8_t Chip8::getKK()
+{
+	// get lowest byte
+	return kk = (opcode & 0x00FF);
+}
+
 void Chip8::op_00E0()
 {
 	memset(video, 0, sizeof(video));
@@ -101,12 +114,7 @@ void Chip8::op_2NNN()
 
 void Chip8::op_3XKK()
 {
-	// x is the lowest 4 bits of the high byte of the instruction
-	// to retrieve x, perform AND operation with opcode then shift 8 bits to the right
-	vx = (opcode & 0x0F00) >> 8;
-	kk = (opcode & 0x00FF);
-
-	if (registers[vx] == kk)
+	if (registers[getVX()] == getKK())
 	{
 		progCounter += 2;
 	}
@@ -114,11 +122,13 @@ void Chip8::op_3XKK()
 
 void Chip8::op_4XKK()
 {
-	vx = (opcode & 0x0F00) >> 8;
-	kk = (opcode & 0x00FF);
-
-	if (registers[vx] != kk)
+	if (registers[getVX()] != getKK())
 	{
 		progCounter += 2;
 	}
+}
+
+void Chip8::op_5XY0()
+{
+
 }
