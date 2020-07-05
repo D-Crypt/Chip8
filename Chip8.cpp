@@ -251,3 +251,11 @@ void Chip8::op_9XY0()
 		skipInstruction();
 	}
 }
+
+void Chip8::op_ANNN()
+{
+	// NNN = 12 bits
+	address = opcode & 0x0FFF;
+
+	index = address;
+}
