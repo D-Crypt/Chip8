@@ -359,3 +359,11 @@ void Chip8::op_FX1E()
 {
 	index += registers[getVX()];
 }
+
+void Chip8::op_FX29()
+{
+	uint8_t digit = registers[getVX()];
+
+	// The index is initialised using the start address (0x50) of the fontset as an offset; digit is multiplied by 5 as each sprite is 5 bytes large
+	index = fontsetStartAddress + (digit * 5);
+}
