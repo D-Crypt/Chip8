@@ -354,3 +354,8 @@ void Chip8::op_FX18()
 {
 	soundTimer = registers[getVX()];
 }
+
+void Chip8::op_FX1E()
+{
+	index += registers[getVX()];
+}
