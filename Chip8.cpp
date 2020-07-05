@@ -331,3 +331,18 @@ void Chip8::op_FX07()
 {
 	registers[getVX()] = delayTimer;
 }
+
+void Chip8::op_FX0A()
+{
+	for (int i = 0; i < 16; ++i) // Manual entry of each keypress may be required
+	{
+		if (keypad[i])
+		{
+			registers[getVX()] = i;
+		}
+		else
+		{
+			progCounter -= 2; // Decrementing program counter by 2 is equivalent to running the same instruction repeatedly
+		}
+	}
+}
