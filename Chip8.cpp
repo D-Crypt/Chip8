@@ -349,3 +349,8 @@ void Chip8::op_FX15()
 {
 	delayTimer = registers[getVX()];
 }
+
+void Chip8::op_FX18()
+{
+	soundTimer = registers[getVX()];
+}
