@@ -326,3 +326,8 @@ void Chip8::op_EXA1()
 		skipInstruction();
 	}
 }
+
+void Chip8::op_FX07()
+{
+	registers[getVX()] = delayTimer;
+}
