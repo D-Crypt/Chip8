@@ -243,3 +243,11 @@ void Chip8::op_8XYE()
 	// Shifting all bits to the left is equivalent to multiplying by 2
 	registers[getVX()] <<= 1;
 }
+
+void Chip8::op_9XY0()
+{
+	if (registers[getVX()] != registers[getVY()])
+	{
+		skipInstruction();
+	}
+}
