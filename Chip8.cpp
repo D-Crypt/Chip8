@@ -259,3 +259,10 @@ void Chip8::op_ANNN()
 
 	index = address;
 }
+
+void Chip8::op_BNNN()
+{
+	address = opcode & 0X0FFF;
+
+	progCounter = address + registers[0];
+}
