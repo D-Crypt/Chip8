@@ -266,3 +266,8 @@ void Chip8::op_BNNN()
 
 	progCounter = address + registers[0];
 }
+
+void Chip8::op_CXKK()
+{
+	registers[getVX()] = randByte(randGen) & getKK();
+}
