@@ -7,7 +7,7 @@ using std::ios;
 using std::streampos;
 using std::chrono::system_clock;
 
-const unsigned int startAddress = 0x200;      // CHIP-8 instructions begin in memory starting at address 0x200
+const unsigned int startAddress = 0x200;       // CHIP-8 instructions begin in memory starting at address 0x200
 const unsigned int fontsetSize = 16 * 5;       // 16 characters required, each taking up 5 bytes of memory
 const unsigned int fontsetStartAddress = 0x50; // Storage space for characters begins at 0x50
 
@@ -270,4 +270,39 @@ void Chip8::op_BNNN()
 void Chip8::op_CXKK()
 {
 	registers[getVX()] = randByte(randGen) & getKK();
+}
+
+void Chip8::op_DXYN()
+{
+	int width = 8; // All sprites are 8 pixels wide
+	int height = opcode & 0X000F; // Value set to last nibble (4 bits) of opcode, as specified in documentation
+	int videoWidth = 64;
+	int videoHeight = 32;
+
+	// Used to wrap around screen boundaries
+	uint8_t xPos = registers[getVX()] % videoWidth;
+	uint8_t yPos = registers[getVY()] % videoHeight;
+
+	registers[vf] = 0; // Will be set to 1 if pixels are erased
+
+	for (int row = 0; row < height; ++row)
+	{
+		uint8_t spriteByte = memory[index + row]; // Reference states start at index when reading sprites from memory
+
+		for (int col = 0; col < width; ++col)
+		{
+			uint8_t spritePixel = spriteByte & (0x80 >> col);
+			uint32_t* screenPixel = &video[(yPos + row) * videoWidth + (xPos + col)];
+
+			if (spritePixel != 0) // If sprite pixel is on
+			{
+				if (*screenPixel == 0xFFFFFFFF) // If screen pixel is on, there is a collision
+				{
+					registers[vf] = 1;
+				}
+
+				*screenPixel ^= 0xFFFFFFFF; // XOR with sprite pixel
+			}
+		}
+	}
 }
