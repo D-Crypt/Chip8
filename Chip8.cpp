@@ -316,3 +316,13 @@ void Chip8::op_EX9E()
 		skipInstruction();
 	}
 }
+
+void Chip8::op_EXA1()
+{
+	uint8_t key = registers[getVX()];
+
+	if (!keypad[key])
+	{
+		skipInstruction();
+	}
+}
