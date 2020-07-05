@@ -306,3 +306,13 @@ void Chip8::op_DXYN()
 		}
 	}
 }
+
+void Chip8::op_EX9E()
+{
+	uint8_t key = registers[getVX()];
+
+	if (keypad[key])
+	{
+		skipInstruction();
+	}
+}
