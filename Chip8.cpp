@@ -391,3 +391,11 @@ void Chip8::op_FX55()
 		memory[index + i] = registers[i];
 	}
 }
+
+void Chip8::op_FX65()
+{
+	for (int i = 0; i <= getVX(); ++i)
+	{
+		registers[i] = memory[index + i];
+	}
+}
