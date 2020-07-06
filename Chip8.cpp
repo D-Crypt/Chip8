@@ -367,3 +367,19 @@ void Chip8::op_FX29()
 	// The index is initialised using the start address (0x50) of the fontset as an offset; digit is multiplied by 5 as each sprite is 5 bytes large
 	index = fontsetStartAddress + (digit * 5);
 }
+
+void Chip8::op_FX33()
+{
+	uint8_t value = registers[getVX()];
+
+	// Using modulo operator allows isolation of right-most digit
+	// Dividing by 10 after each iteration will truncate any decimal numbers
+
+	memory[index + 2] = value % 10; // ones digit
+	value /= 10;
+
+	memory[index + 1] = value % 10; // tens digit
+	value /= 10;
+
+	memory[index] = value % 10;     // hundreds digit
+}
