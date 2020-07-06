@@ -383,3 +383,11 @@ void Chip8::op_FX33()
 
 	memory[index] = value % 10;     // hundreds digit
 }
+
+void Chip8::op_FX55()
+{
+	for (int i = 0; i <= getVX(); ++i)
+	{
+		memory[index + i] = registers[i];
+	}
+}
