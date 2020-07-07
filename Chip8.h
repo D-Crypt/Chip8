@@ -37,8 +37,8 @@ public:
 	uint8_t getVY();
 	uint16_t getSum();
 	void skipInstruction();
+	void executeOpcode();
 	void cycle();
-	void opTable();
 
 	// Below is a list of the 34 instructions executed by CHIP-8 with their accompanying hexadecimal values:
 	void op_00E0(); // CLS: Clear the display

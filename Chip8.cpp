@@ -400,7 +400,7 @@ void Chip8::op_FX65()
 	}
 }
 
-void Chip8::opTable()
+void Chip8::executeOpcode()
 {
 	switch (opcode & 0xF000)
 	{
@@ -530,5 +530,28 @@ void Chip8::opTable()
 		}
 
 		break;
+	}
+}
+
+void Chip8::cycle()
+{
+	// Fetch the next instruction in the form of an opcode
+	// Shifting the first piece of memory to the left by 8 bits makes it 8 bytes long
+	// By being 8 bytes long, the second piece of memory can now be added to the first with inclusive OR |
+	// e.g. 0x10 << 8 = 0x1000; 0x1000 | 0xF0 = 0x10F0
+	opcode = (memory[progCounter] << 8) | memory[progCounter + 1];
+
+	skipInstruction();
+
+	executeOpcode();
+
+	if (delayTimer > 0)
+	{
+		--delayTimer;
+	}
+
+	if (soundTimer > 0)
+	{
+		--soundTimer;
 	}
 }
