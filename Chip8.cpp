@@ -334,15 +334,74 @@ void Chip8::op_FX07()
 
 void Chip8::op_FX0A()
 {
-	for (int i = 0; i < 16; ++i) // Manual entry of each keypress may be required rather than a for loop
+	if (keypad[0])
 	{
-		if (keypad[i])
-		{
-			registers[getVX()] = i;
-		}
+		registers[getVX()] = 0;
 	}
-
-	progCounter -= 2; // Decrementing program counter by 2 is equivalent to running the same instruction repeatedly
+	else if (keypad[1])
+	{
+		registers[getVX()] = 1;
+	}
+	else if (keypad[2])
+	{
+		registers[getVX()] = 2;
+	}
+	else if (keypad[3])
+	{
+		registers[getVX()] = 3;
+	}
+	else if (keypad[4])
+	{
+		registers[getVX()] = 4;
+	}
+	else if (keypad[5])
+	{
+		registers[getVX()] = 5;
+	}
+	else if (keypad[6])
+	{
+		registers[getVX()] = 6;
+	}
+	else if (keypad[7])
+	{
+		registers[getVX()] = 7;
+	}
+	else if (keypad[8])
+	{
+		registers[getVX()] = 8;
+	}
+	else if (keypad[9])
+	{
+		registers[getVX()] = 9;
+	}
+	else if (keypad[10])
+	{
+		registers[getVX()] = 10;
+	}
+	else if (keypad[11])
+	{
+		registers[getVX()] = 11;
+	}
+	else if (keypad[12])
+	{
+		registers[getVX()] = 12;
+	}
+	else if (keypad[13])
+	{
+		registers[getVX()] = 13;
+	}
+	else if (keypad[14])
+	{
+		registers[getVX()] = 14;
+	}
+	else if (keypad[15])
+	{
+		registers[getVX()] = 15;
+	}
+	else
+	{
+		progCounter -= 2; // Decrementing program counter by 2 is equivalent to running the same instruction repeatedly
+	}
 }
 
 void Chip8::op_FX15()
