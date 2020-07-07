@@ -417,59 +417,82 @@ void Chip8::opTable()
 		
 		break;
 	case 0x1000:
+		op_1NNN();
 		break;
 	case 0x2000:
+		op_2NNN();
 		break;
 	case 0x3000:
+		op_3XKK();
 		break;
 	case 0x4000:
+		op_4XKK();
 		break;
 	case 0x5000:
+		op_5XY0();
 		break;
 	case 0x6000:
+		op_6XKK();
 		break;
 	case 0x7000:
+		op_7XKK();
 		break;
 	case 0x8000:
 		switch (opcode & 0xF)
 		{
 		case 0x0:
+			op_8XY0();
 			break;
 		case 0x1:
+			op_8XY1();
 			break;
 		case 0x2:
+			op_8XY2();
 			break;
 		case 0x3:
+			op_8XY3();
 			break;
 		case 0x4:
+			op_8XY4();
 			break;
 		case 0x5:
+			op_8XY5();
 			break;
 		case 0x6:
+			op_8XY6();
 			break;
 		case 0x7:
+			op_8XY7();
 			break;
 		case 0xE:
+			op_8XYE();
 			break;
 		}
 
 		break;
 	case 0x9000:
+		op_9XY0();
 		break;
 	case 0xA000:
+		op_ANNN();
 		break;
 	case 0xB000:
+		op_BNNN();
 		break;
 	case 0xC000:
+		op_CXKK();
 		break;
 	case 0xD000:
+		op_DXYN();
 		break;
 	case 0xE000:
 		switch (opcode & 0xFF)
 		{
 		case 0x9E:
+			op_EX9E();
 			break;
 		case 0xA1:
+			op_EXA1();
 			break;
 		}
 
@@ -478,22 +501,31 @@ void Chip8::opTable()
 		switch (opcode & 0xFF)
 		{
 		case 0x07:
+			op_FX07();
 			break;
 		case 0x0A:
+			op_FX0A();
 			break;
 		case 0x15:
+			op_FX15();
 			break;
 		case 0x18:
+			op_FX18();
 			break;
 		case 0x1E:
+			op_FX1E();
 			break;
 		case 0x29:
+			op_FX29();
 			break;
 		case 0x33:
+			op_FX33();
 			break;
 		case 0x55:
+			op_FX55();
 			break;
 		case 0x65:
+			op_FX65();
 			break;
 		}
 
