@@ -1,6 +1,10 @@
 #pragma once
 #include <SDL.h>
 
+class SDL_Window;
+class SDL_Renderer;
+class SDL_Texture;
+
 class Platform
 {
 public:
