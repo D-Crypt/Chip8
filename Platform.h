@@ -18,4 +18,3 @@ private:
 	SDL_Renderer* renderer;
 	SDL_Texture* texture;
 };
-

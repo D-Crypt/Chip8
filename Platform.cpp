@@ -17,3 +17,11 @@ Platform::~Platform()
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 }
+
+void Platform::update(void const* buffer, int pitch) // void const* means that buffer is read-only (i.e. not modifiable)
+{
+	SDL_UpdateTexture(texture, nullptr, buffer, pitch);
+	SDL_RenderClear(renderer);
+	SDL_RenderCopy(renderer, texture, nullptr, nullptr);
+	SDL_RenderPresent(renderer);
+}
