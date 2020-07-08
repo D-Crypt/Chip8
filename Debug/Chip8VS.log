@@ -1,0 +1,14 @@
+﻿  Chip8.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\random(1923,5): error C2338: invalid template argument for uniform_int_distribution: N4659 29.6.1.1 [rand.req.genl]/1e requires one of short, int, long, long long, unsigned short, unsigned int, unsigned long, or unsigned long long
+C:\Users\Daniel\source\repos\Chip8\Chip8.h(32): message : see reference to class template instantiation 'std::uniform_int_distribution<uint8_t>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\include\random(1923,1): error C2338: note: char, signed char, unsigned char, char8_t, int8_t, and uint8_t are not allowed
+C:\Users\Daniel\source\repos\Chip8\Chip8.cpp(34,70): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
+          with
+          [
+              _Rep=std::chrono::system_clock::rep
+          ]
+C:\Users\Daniel\source\repos\Chip8\Chip8.cpp(57,27): warning C4244: 'initializing': conversion from 'std::streamoff' to 'unsigned int', possible loss of data
+  Platform.cpp
+C:\Users\Daniel\source\repos\Chip8\Platform.h(6,2): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Daniel\source\repos\Chip8\Platform.h(8,2): warning C4183: 'Chip8': missing return type; assumed to be a member function returning 'int'
+  Generating Code...

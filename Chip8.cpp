@@ -613,4 +613,4 @@ void Chip8::cycle()
 	{
 		--soundTimer;
 	}
-}
+};
