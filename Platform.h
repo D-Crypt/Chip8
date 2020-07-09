@@ -1,4 +1,5 @@
 #pragma once
+
 #include <SDL.h>
 
 class SDL_Window;
