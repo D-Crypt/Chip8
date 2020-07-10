@@ -10,18 +10,6 @@ class Chip8
 {
 public:
 	Chip8();                 // Class contructor
-	uint8_t keypad[16];      // 16 input keys for controlling the system
-	uint32_t video[64 * 32]; // Memory buffer used for storing graphics (64 pixels wide, 32 pixels tall)
-	void loadROM(char const* filename); // filename is a pointer to a const char
-	//uint8_t getVX();
-	//uint8_t getKK();
-	//uint8_t getVY();
-	//uint16_t getSum();
-	//void skipInstruction();
-	void executeOpcode();
-	void cycle();
-
-private:
 	uint8_t registers[16];   // 16 8-bit registers named V0 to VF
 	uint8_t memory[4096];    // 4k bytes of memory
 	uint16_t index;	         // 16-bit index register
@@ -30,16 +18,28 @@ private:
 	uint8_t stackPointer;    // 8-bit pointer to track where values are placed in the stack
 	uint8_t delayTimer;      // 8-bit timer used for emulation cycles
 	uint8_t soundTimer;      // 8-bit timer used for sound emission
+	uint8_t keypad[16];      // 16 input keys for controlling the system
+	uint32_t video[64 * 32]; // Memory buffer used for storing graphics (64 pixels wide, 32 pixels tall)
 	uint16_t opcode;         // Operation code that specifies what instruction to be performed	
-	//uint16_t address;
-	//uint8_t vx;              // V = register, x = lower 4 bits of high byte of instruction
-	//uint8_t kk;              // lowest 8 bits (byte) of an instruction
-	//uint8_t vy;              // V = register, y = upper 4 bits of low byte of instruction
-	//uint16_t sum;            // sum of VX + VY
+	uint16_t address;
+	uint8_t vx;              // V = register, x = lower 4 bits of high byte of instruction
+	uint8_t kk;              // lowest 8 bits (byte) of an instruction
+	uint8_t vy;              // V = register, y = upper 4 bits of low byte of instruction
+	uint8_t vf;              // used as a flag
+	uint16_t sum;            // sum of VX + VY
 
-	//const uint16_t endRAM = 0x0FFF; // 0x0FFF is end of CHIP-8 RAM
+	const uint16_t endRAM = 0x0FFF; // 0x0FFF is end of CHIP-8 RAM
 	default_random_engine randGen; // Random Number Generator
 	uniform_int_distribution<int> randByte; // Random byte
+
+	void loadROM(char const* filename); // filename is a pointer to a const char
+	uint8_t getVX();
+	uint8_t getKK();
+	uint8_t getVY();
+	uint16_t getSum();
+	void skipInstruction();
+	void executeOpcode();
+	void cycle();
 
 	// Below is a list of the 34 instructions executed by CHIP-8 with their accompanying hexadecimal values:
 	void op_00E0(); // CLS: Clear the display

@@ -1,8 +1,8 @@
-﻿  Chip8.cpp
-C:\Users\Daniel\source\repos\Chip8\Chip8.cpp(34,70): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
-          with
-          [
-              _Rep=std::chrono::system_clock::rep
-          ]
-C:\Users\Daniel\source\repos\Chip8\Chip8.cpp(56,27): warning C4244: 'initializing': conversion from 'std::streamoff' to 'unsigned int', possible loss of data
+﻿  Main.cpp
+C:\Users\Daniel\source\repos\Chip8\Platform.h(5,17): warning C4099: 'SDL_Window': type name first seen using 'struct' now seen using 'class'
+C:\Users\Daniel\Desktop\SDL2-devel-2.0.12-VC\SDL2-2.0.12\include\SDL_video.h(90): message : see declaration of 'SDL_Window'
+C:\Users\Daniel\source\repos\Chip8\Platform.h(6,19): warning C4099: 'SDL_Renderer': type name first seen using 'struct' now seen using 'class'
+C:\Users\Daniel\Desktop\SDL2-devel-2.0.12-VC\SDL2-2.0.12\include\SDL_render.h(132): message : see declaration of 'SDL_Renderer'
+C:\Users\Daniel\source\repos\Chip8\Platform.h(7,18): warning C4099: 'SDL_Texture': type name first seen using 'struct' now seen using 'class'
+C:\Users\Daniel\Desktop\SDL2-devel-2.0.12-VC\SDL2-2.0.12\include\SDL_render.h(138): message : see declaration of 'SDL_Texture'
   Chip8VS.vcxproj -> C:\Users\Daniel\source\repos\Chip8\Debug\Chip8VS.exe
