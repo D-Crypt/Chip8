@@ -1,2 +1,8 @@
-﻿  LINK : C:\Users\Daniel\source\repos\Chip8\Debug\Chip8VS.exe not found or not built by the last incremental link; performing full link
+﻿  Chip8.cpp
+C:\Users\Daniel\source\repos\Chip8\Chip8.cpp(34,70): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
+          with
+          [
+              _Rep=std::chrono::system_clock::rep
+          ]
+C:\Users\Daniel\source\repos\Chip8\Chip8.cpp(57,27): warning C4244: 'initializing': conversion from 'std::streamoff' to 'unsigned int', possible loss of data
   Chip8VS.vcxproj -> C:\Users\Daniel\source\repos\Chip8\Debug\Chip8VS.exe
