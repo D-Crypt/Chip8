@@ -1,4 +1,3 @@
-//#include "Main.h"
 #include "Platform.h"
 #include "Chip8.h"
 #include <chrono>
@@ -7,7 +6,6 @@
 
 using std::cerr;
 using std::exit;
-//using std::atoi;
 using std::stoi;
 using std::chrono::high_resolution_clock;
 using std::chrono::duration;
@@ -15,8 +13,6 @@ using std::chrono::milliseconds;
 
 int main(int argc, char* argv[])
 {
-	std::cout << "RUNNING MAIN";
-
 	if (argc != 4)
 	{
 		cerr << "Usage: " << argv[0] << "<Scale> <Delay> <ROM>\n";
