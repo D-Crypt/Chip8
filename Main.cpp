@@ -1,26 +1,30 @@
-#include "Main.h"
+//#include "Main.h"
 #include "Platform.h"
 #include "Chip8.h"
 #include <chrono>
 #include <iostream>
+#include <string>
 
 using std::cerr;
 using std::exit;
-using std::atoi;
+//using std::atoi;
+using std::stoi;
 using std::chrono::high_resolution_clock;
 using std::chrono::duration;
 using std::chrono::milliseconds;
 
-int main(int argc, char** argv)
+int main(int argc, char* argv[])
 {
+	std::cout << "RUNNING MAIN";
+
 	if (argc != 4)
 	{
 		cerr << "Usage: " << argv[0] << "<Scale> <Delay> <ROM>\n";
 		exit(EXIT_FAILURE);
 	}
 
-	int videoScale = atoi(argv[1]);
-	int cycleDelay = atoi(argv[2]);
+	int videoScale = stoi(argv[1]);
+	int cycleDelay = stoi(argv[2]);
 	char const* romFilename = argv[3];
 
 	Platform platform("CHIP-8 Emulator", 64 * videoScale, 32 * videoScale, 64, 32);

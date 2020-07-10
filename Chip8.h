@@ -30,7 +30,7 @@ public:
 
 	const uint16_t endRAM = 0x0FFF; // 0x0FFF is end of CHIP-8 RAM
 	default_random_engine randGen; // Random Number Generator
-	uniform_int_distribution<uint8_t> randByte; // Random byte
+	uniform_int_distribution<int> randByte; // Random byte
 
 	void loadROM(char const* filename); // filename is a pointer to a const char
 	uint8_t getVX();

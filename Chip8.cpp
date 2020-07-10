@@ -41,7 +41,7 @@ Chip8::Chip8() : randGen(system_clock::now().time_since_epoch().count()) // Init
 		memory[fontsetStartAddress + i] = fontset[i];
 	}
 
-	randByte = uniform_int_distribution<uint8_t>(0, 255U); // Initialise random byte to a number between 0 and 255
+	randByte = uniform_int_distribution<int>(0, 255U); // Initialise random byte to a number between 0 and 255
 	vf = registers[0xF];
 }
 

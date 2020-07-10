@@ -1,0 +1,2 @@
+C:\Users\Daniel\source\repos\Chip8\Debug\Chip8VS.exe
+C:\Users\Daniel\source\repos\Chip8\Debug\Chip8VS.pdb
