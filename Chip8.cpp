@@ -202,11 +202,11 @@ void Chip8::op_8XY5()
 {
 	if (registers[getVX()] > registers[getVY()])
 	{
-		registers[vf] = 1;
+		registers[0xF] = 1;
 	}
 	else
 	{
-		registers[vf] = 0;
+		registers[0xF] = 0;
 	}
 
 	registers[getVX()] -= registers[getVY()];
@@ -215,7 +215,7 @@ void Chip8::op_8XY5()
 void Chip8::op_8XY6()
 {
 	// Checks if least-significant bit of VX is 1
-	registers[vf] = (registers[getVX()] & 0x1);
+	registers[0xF] = (registers[getVX()] & 0x1);
 
 	// Shifting all bits to the right is equivalent to dividing by 2
 	registers[getVX()] >>= 1;
@@ -225,11 +225,11 @@ void Chip8::op_8XY7()
 {
 	if (registers[getVY()] > registers[getVX()])
 	{
-		registers[vf] = 1;
+		registers[0xF] = 1;
 	}
 	else
 	{
-		registers[vf] = 0;
+		registers[0xF] = 0;
 	}
 
 	registers[getVX()] = registers[getVY()] - registers[getVX()];
@@ -238,7 +238,7 @@ void Chip8::op_8XY7()
 void Chip8::op_8XYE()
 {
 	// 0x80 in binary form is 10000000, which can be used to retrieve the most-significant bit
-	registers[vf] = (registers[getVX()] & 0x80) >> 7;
+	registers[0xF] = (registers[getVX()] & 0x80) >> 7;
 
 	// Shifting all bits to the left is equivalent to multiplying by 2
 	registers[getVX()] <<= 1;
