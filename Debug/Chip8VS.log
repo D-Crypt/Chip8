@@ -1,8 +1,2 @@
-﻿  Main.cpp
-C:\Users\Daniel\source\repos\Chip8\Platform.h(5,17): warning C4099: 'SDL_Window': type name first seen using 'struct' now seen using 'class'
-C:\Users\Daniel\Desktop\SDL2-devel-2.0.12-VC\SDL2-2.0.12\include\SDL_video.h(90): message : see declaration of 'SDL_Window'
-C:\Users\Daniel\source\repos\Chip8\Platform.h(6,19): warning C4099: 'SDL_Renderer': type name first seen using 'struct' now seen using 'class'
-C:\Users\Daniel\Desktop\SDL2-devel-2.0.12-VC\SDL2-2.0.12\include\SDL_render.h(132): message : see declaration of 'SDL_Renderer'
-C:\Users\Daniel\source\repos\Chip8\Platform.h(7,18): warning C4099: 'SDL_Texture': type name first seen using 'struct' now seen using 'class'
-C:\Users\Daniel\Desktop\SDL2-devel-2.0.12-VC\SDL2-2.0.12\include\SDL_render.h(138): message : see declaration of 'SDL_Texture'
+﻿  LINK : C:\Users\Daniel\source\repos\Chip8\Debug\Chip8VS.exe not found or not built by the last incremental link; performing full link
   Chip8VS.vcxproj -> C:\Users\Daniel\source\repos\Chip8\Debug\Chip8VS.exe
