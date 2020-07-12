@@ -7,3 +7,6 @@
 /Chip8VS.vcxproj.filters
 /Chip8VS.vcxproj
 /Chip8VS.sln
+/Debug
+*.ch8
+Main.h
